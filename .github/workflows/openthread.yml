@@ -1,0 +1,14 @@
+name: openthread
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install dependencies
+      run: sudo apt-get install -y gcc-9 g++-9 && export CC=gcc-9 CXX=g++-9
+    - uses: actions/checkout
+    - name: Before install script
+      run: .travis/before_install.sh
+    - name: Main script
+      run: .travis/script.sh
